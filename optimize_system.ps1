@@ -3,7 +3,7 @@ if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
     Write-Warning "Please run this script as Administrator!"
     exit
 }
-
+self.ghl_api_key = "YOUR_GHL_API_KEY"  # Replace with actual key
 # Save current work state
 Write-Host "Saving current work state..."
 $browserProcesses = Get-Process | Where-Object { $_.ProcessName -match 'chrome|firefox|edge|brave|opera' }

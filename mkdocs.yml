@@ -1,4 +1,8 @@
 site_name: IMMORTAL BROTHERHOOD Documentation
+site_url: https://Tunetown187.github.io/IMMORTAL_BROTHERHOOD/
+repo_url: https://github.com/Tunetown187/IMMORTAL_BROTHERHOOD
+edit_uri: edit/main/docs/
+
 theme:
   name: material
   features:
@@ -7,6 +11,9 @@ theme:
     - navigation.expand
     - search.suggest
     - search.highlight
+  palette:
+    primary: indigo
+    accent: indigo
 
 plugins:
   - search
@@ -24,3 +31,7 @@ plugins:
 nav:
   - Home: index.md
   - API Reference: api.md
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences

@@ -1,0 +1,12 @@
+openai>=1.51.0,<2.0.0
+instructor>=1.2.2
+deepdiff==6.7.1
+termcolor==2.3.0
+python-dotenv==1.0.0
+rich==13.7.0
+jsonref==1.1.0
+openadapt>=0.42.5  # Updated to latest version instead of 0.3.0
+mkdocs==1.5.3
+mkdocs-material==9.4.14
+mkdocstrings==0.24.0
+mkdocstrings-python==1.7.5

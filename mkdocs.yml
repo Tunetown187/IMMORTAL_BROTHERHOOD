@@ -12,8 +12,9 @@ theme:
     - search.suggest
     - search.highlight
   palette:
-    primary: indigo
-    accent: indigo
+    scheme: slate
+    primary: deep purple
+    accent: purple
 
 plugins:
   - search
@@ -30,8 +31,23 @@ plugins:
 
 nav:
   - Home: index.md
+  - Revenue Streams:
+    - Crypto Operations: crypto.md
+    - AI Music & Royalties: music.md
+    - Affiliate Marketing: affiliate.md
+    - E-commerce & Dropshipping: ecommerce.md
+    - Faceless YouTube: youtube.md
+  - Technology:
+    - AI Agents: ai-agents.md
+    - Website Development: websites.md
+  - Resources:
+    - Resource Center: resources.md
   - API Reference: api.md
 
 markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.emoji
+  - admonition
+  - meta

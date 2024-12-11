@@ -1,0 +1,116 @@
+{
+    "risk_management": {
+        "max_position_size": 0.1,
+        "stop_loss_percentage": 0.02,
+        "take_profit_percentage": 0.05,
+        "max_daily_loss": 0.05,
+        "max_leverage": 3
+    },
+    "arbitrage": {
+        "min_profit_threshold": 0.005,
+        "max_trade_amount": 1000,
+        "min_volume_threshold": 10000
+    },
+    "mev": {
+        "gas_boost_multiplier": 1.2,
+        "min_profit_threshold": 0.1,
+        "max_block_delay": 2
+    },
+    "flash_loans": {
+        "platforms": [
+            "aave",
+            "dydx",
+            "compound"
+        ],
+        "min_profit_threshold": 0.02,
+        "max_loan_amount": 1000000
+    },
+    "trading_bots": {
+        "strategies": [
+            "trend_following",
+            "mean_reversion",
+            "breakout",
+            "grid_trading"
+        ],
+        "timeframes": [
+            "1m",
+            "5m",
+            "15m",
+            "1h",
+            "4h",
+            "1d"
+        ],
+        "indicators": {
+            "rsi": {
+                "period": 14,
+                "overbought": 70,
+                "oversold": 30
+            },
+            "macd": {
+                "fast_period": 12,
+                "slow_period": 26,
+                "signal_period": 9
+            },
+            "bollinger": {
+                "period": 20,
+                "std_dev": 2
+            }
+        }
+    },
+    "supported_chains": {
+        "ethereum": {
+            "enabled": true,
+            "priority": 1,
+            "dex_list": [
+                "uniswap",
+                "sushiswap",
+                "curve"
+            ]
+        },
+        "bsc": {
+            "enabled": true,
+            "priority": 2,
+            "dex_list": [
+                "pancakeswap",
+                "biswap",
+                "apeswap"
+            ]
+        },
+        "polygon": {
+            "enabled": true,
+            "priority": 3,
+            "dex_list": [
+                "quickswap",
+                "sushiswap",
+                "curve"
+            ]
+        },
+        "arbitrum": {
+            "enabled": true,
+            "priority": 4,
+            "dex_list": [
+                "arbitrum_uniswap",
+                "sushiswap",
+                "curve"
+            ]
+        },
+        "optimism": {
+            "enabled": true,
+            "priority": 5,
+            "dex_list": [
+                "optimism_uniswap",
+                "velodrome",
+                "curve"
+            ]
+        },
+        "avalanche": {
+            "enabled": true,
+            "priority": 6,
+            "dex_list": [
+                "trader_joe",
+                "pangolin",
+                "curve"
+            ]
+        }
+    }
+}

@@ -1,0 +1,100 @@
+{
+    "youtube": {
+        "channels": [
+            {
+                "name": "Wealth Insights",
+                "niche": "finance",
+                "upload_frequency": "daily",
+                "video_length": "10-15min"
+            },
+            {
+                "name": "Tech Trends",
+                "niche": "technology",
+                "upload_frequency": "daily",
+                "video_length": "8-12min"
+            },
+            {
+                "name": "Lifestyle Plus",
+                "niche": "lifestyle",
+                "upload_frequency": "daily",
+                "video_length": "5-10min"
+            }
+        ],
+        "video_templates": [
+            "story-based",
+            "list-based",
+            "tutorial-based",
+            "review-based"
+        ]
+    },
+    "dropshipping": {
+        "stores": [
+            {
+                "name": "TechGear Pro",
+                "platform": "Shopify",
+                "niche": "electronics"
+            },
+            {
+                "name": "Lifestyle Essentials",
+                "platform": "Shopify",
+                "niche": "home & living"
+            }
+        ],
+        "suppliers": [
+            "AliExpress",
+            "CJDropshipping",
+            "Spocket"
+        ]
+    },
+    "music": {
+        "genres": [
+            "lofi",
+            "ambient",
+            "meditation",
+            "background"
+        ],
+        "platforms": [
+            "Spotify",
+            "Apple Music",
+            "Amazon Music",
+            "YouTube Music"
+        ],
+        "daily_tracks": 5
+    },
+    "content": {
+        "blogs": [
+            {
+                "name": "Tech Insider",
+                "niche": "technology",
+                "posts_per_day": 3
+            },
+            {
+                "name": "Wealth Builder",
+                "niche": "finance",
+                "posts_per_day": 3
+            }
+        ],
+        "rss_feeds": [
+            "TechCrunch",
+            "Bloomberg",
+            "Forbes"
+        ]
+    },
+    "ads": {
+        "platforms": {
+            "Google": {
+                "daily_budget": 100,
+                "target_roas": 2.5
+            },
+            "Facebook": {
+                "daily_budget": 100,
+                "target_roas": 2.0
+            },
+            "TikTok": {
+                "daily_budget": 50,
+                "target_roas": 1.8
+            }
+        },
+        "optimization_frequency": "hourly"
+    }
+}

@@ -1,0 +1,47 @@
+1. Traffic Wizard details
+
+email = iamthatiam187187@gmail.com
+key = 54DD-215F-FA8A
+download = https://www.dropbox.com/s/byv7dhpio0oo9s4/trafficwizard.zip?dl=0
+
+---------------
+
+2. GMB Leads Scraper details
+
+email = iamthatiam187187@gmail.com
+key = 81D1-CF11-2571
+download = https://www.dropbox.com/s/5mp7ggz7psrbncn/gmbleadsscraper.zip?dl=0
+
+---------------
+
+3. Email Finder & Scraper details
+
+email = iamthatiam187187@gmail.com
+key = 320A-D111-A0BB
+download = https://www.dropbox.com/s/i27achtgysn5no4/EmailFinderScraper.zip?dl=0
+
+---------------
+
+4. Google Maps Maker details
+
+email = iamthatiam187187@gmail.com
+key = FA03-0212-2562
+download = https://www.dropbox.com/s/oh6ccnzlg4hqjii/mapsmonster.zip?dl=0
+
+---------------
+
+5. GMB QA Poster & Questions Scraper details
+
+email = iamthatiam187187@gmail.com
+key = 00D3-D4B0-E5F1
+download = https://www.dropbox.com/s/tab2n5dk3kx5meh/gmbQAposterQuestionsScraper.zip?dl=0
+
+---------------
+
+6. Zillow Messaging Bot details
+
+email = iamthatiam187187@gmail.com
+key = 9AA6-1032-13EB
+download = https://www.dropbox.com/s/cpp2vc11n3ojzpb/zillowmessagingbot.zip?dl=0
+
+---------------

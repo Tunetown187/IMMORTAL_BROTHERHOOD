@@ -1,0 +1,14 @@
+{
+    "machine_learning": {
+        "prediction_models": true,
+        "data_analysis": true
+    },
+    "nlp": {
+        "text_generation": true,
+        "sentiment_analysis": true
+    },
+    "computer_vision": {
+        "object_detection": true,
+        "facial_recognition": true
+    }
+}

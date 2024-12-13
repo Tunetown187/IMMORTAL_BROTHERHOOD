@@ -1,121 +1,134 @@
 import asyncio
-from web3 import Web3
 import logging
 from pathlib import Path
+from datetime import datetime
 import json
-from typing import Dict, List
-from strategies.mev_hunter import MEVHunter
-from strategies.flash_loan_master import FlashLoanMaster
-from strategies.arbitrage_master import ArbitrageMaster
+import sys
+
+# Add parent directory to path
+sys.path.append(str(Path(__file__).parent))
+
+# Import all managers
+from automation.content_factory import ContentFactory
+from automation.ecommerce_manager import EcommerceManager
+from automation.payment_manager import PaymentManager
+from automation.lead_gen import LeadGenerator
+from automation.campaign_manager import CampaignManager
+from automation.affiliate_manager import AffiliateManager
+from automation.telegram_bot import SecureTelegramBot
+from automation.bhw_scraper import BHWScraper
+from automation.security_manager import SecurityManager
+from automation.cloud_manager import CloudManager
+from automation.crypto_manager import CryptoManager
+from automation.defi_manager import DeFiManager
+from automation.nft_manager import NFTManager
+from automation.metaverse_manager import MetaverseManager
+from automation.social_media_manager import SocialMediaManager
+from automation.marketing_manager import MarketingManager
 
 class MasterController:
     def __init__(self):
+        self.content_factory = ContentFactory()
+        self.ecommerce_manager = EcommerceManager()
+        self.payment_manager = PaymentManager()
+        self.lead_generator = LeadGenerator()
+        self.campaign_manager = CampaignManager()
+        self.affiliate_manager = AffiliateManager()
+        self.telegram_bot = SecureTelegramBot()
+        self.bhw_scraper = BHWScraper()
+        self.security_manager = SecurityManager()
+        self.cloud_manager = CloudManager()
+        self.crypto_manager = CryptoManager()
+        self.defi_manager = DeFiManager()
+        self.nft_manager = NFTManager()
+        self.metaverse_manager = MetaverseManager()
+        self.social_media_manager = SocialMediaManager()
+        self.marketing_manager = MarketingManager()
+        
         self.setup_logging()
-        self.web3_connections = self.initialize_connections()
-        self.strategies = self.initialize_strategies()
-        self.profit_tracker = {
-            'mev': 0.0,
-            'flash_loans': 0.0,
-            'arbitrage': 0.0,
-            'total': 0.0
-        }
+        self.load_config()
         
     def setup_logging(self):
         logging.basicConfig(
-            filename='master_controller.log',
             level=logging.INFO,
-            format='%(asctime)s - %(levelname)s - %(message)s'
+            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+            handlers=[
+                logging.FileHandler('master_controller.log'),
+                logging.StreamHandler()
+            ]
         )
         
-    def initialize_connections(self) -> Dict[str, Web3]:
-        """Initialize connections to all supported blockchains"""
-        connections = {
-            'ethereum': Web3(Web3.HTTPProvider('https://ethereum.publicnode.com')),
-            'bsc': Web3(Web3.HTTPProvider('https://bsc-dataseed1.binance.org')),
-            'polygon': Web3(Web3.HTTPProvider('https://polygon-rpc.com')),
-            'arbitrum': Web3(Web3.HTTPProvider('https://arb1.arbitrum.io/rpc')),
-            'optimism': Web3(Web3.HTTPProvider('https://mainnet.optimism.io')),
-            'avalanche': Web3(Web3.HTTPProvider('https://api.avax.network/ext/bc/C/rpc'))
-        }
-        
-        # Test connections
-        for chain, w3 in connections.items():
-            if w3.is_connected():
-                logging.info(f"Connected to {chain}")
-            else:
-                logging.error(f"Failed to connect to {chain}")
-                
-        return connections
-        
-    def initialize_strategies(self) -> Dict:
-        """Initialize all trading strategies"""
-        return {
-            'mev': MEVHunter(self.web3_connections),
-            'flash_loans': FlashLoanMaster(self.web3_connections),
-            'arbitrage': ArbitrageMaster(self.web3_connections)
-        }
-        
-    async def monitor_profits(self):
-        """Monitor and log profits from all strategies"""
+    def load_config(self):
+        config_path = Path(__file__).parent / 'config.json'
+        with open(config_path, 'r') as f:
+            self.config = json.load(f)
+            
+    async def start_all_systems(self):
+        """Start all automation systems"""
+        try:
+            # Start infrastructure
+            await self.cloud_manager.setup_servers()
+            await self.security_manager.start_monitoring()
+            
+            # Start revenue generation
+            await self.ecommerce_manager.start_stores()
+            await self.payment_manager.start_processors()
+            await self.content_factory.start_generation()
+            await self.affiliate_manager.start_campaigns()
+            
+            # Start lead generation
+            await self.lead_generator.start_scraping()
+            await self.campaign_manager.start_campaigns()
+            await self.bhw_scraper.start_scraping()
+            
+            # Start marketing and social media
+            await self.social_media_manager.run_forever()
+            await self.marketing_manager.run_forever()
+            
+            # Start crypto operations
+            await self.crypto_manager.run_forever()
+            await self.defi_manager.run_forever()
+            await self.nft_manager.run_forever()
+            await self.metaverse_manager.run_forever()
+            
+            # Start monitoring
+            await self.telegram_bot.start()
+            
+            logging.info("All systems started successfully")
+            
+        except Exception as e:
+            logging.error(f"Error starting systems: {str(e)}")
+            await self.telegram_bot.send_notification(f"Error: {str(e)}")
+            
+    async def monitor_metrics(self):
+        """Monitor business metrics"""
         while True:
-            try:
-                # Update profit tracking
-                self.profit_tracker['total'] = sum(
-                    value for key, value in self.profit_tracker.items()
-                    if key != 'total'
-                )
+            metrics = {
+                "revenue": await self.payment_manager.get_total_revenue(),
+                "leads": await self.lead_generator.get_lead_count(),
+                "content": await self.content_factory.get_content_count(),
+                "stores": await self.ecommerce_manager.get_store_count()
+            }
+            
+            # Save metrics
+            metrics_file = Path("metrics.json")
+            with open(metrics_file, "w") as f:
+                json.dump(metrics, f, indent=4)
                 
-                # Log current profits
-                logging.info("=== Profit Report ===")
-                for strategy, profit in self.profit_tracker.items():
-                    logging.info(f"{strategy.capitalize()}: ${profit:,.2f}")
-                    
-                # Save profit data
-                await self.save_profit_data()
-                
-            except Exception as e:
-                logging.error(f"Error monitoring profits: {e}")
-                
-            await asyncio.sleep(300)  # Update every 5 minutes
+            # Send update
+            await self.telegram_bot.send_notification(
+                f"Daily Metrics:\nRevenue: ${metrics['revenue']}\n" +
+                f"Leads: {metrics['leads']}\nContent: {metrics['content']}\n" +
+                f"Stores: {metrics['stores']}"
+            )
             
-    async def save_profit_data(self):
-        """Save profit data to file"""
-        try:
-            data_path = Path("data/profits.json")
-            data_path.parent.mkdir(exist_ok=True)
+            await asyncio.sleep(86400)  # Daily updates
             
-            with open(data_path, 'w') as f:
-                json.dump(self.profit_tracker, f, indent=2)
-        except Exception as e:
-            logging.error(f"Error saving profit data: {e}")
-            
-    async def run(self):
-        """Run all strategies concurrently"""
-        try:
-            # Start profit monitoring
-            profit_monitor = asyncio.create_task(self.monitor_profits())
-            
-            # Start all strategies
-            strategy_tasks = []
-            for strategy_name, strategy in self.strategies.items():
-                strategy_tasks.append(asyncio.create_task(strategy.run()))
-                logging.info(f"Started {strategy_name} strategy")
-                
-            # Wait for all tasks
-            await asyncio.gather(profit_monitor, *strategy_tasks)
-            
-        except Exception as e:
-            logging.error(f"Error in master controller: {e}")
-            
-    def update_profit(self, strategy: str, amount: float):
-        """Update profit for a specific strategy"""
-        if strategy in self.profit_tracker:
-            self.profit_tracker[strategy] += amount
-            logging.info(f"Updated {strategy} profit: +${amount:,.2f}")
-            
-async def main():
-    controller = MasterController()
-    await controller.run()
-
+    async def run_forever(self):
+        """Run all systems continuously"""
+        await self.start_all_systems()
+        await self.monitor_metrics()
+        
 if __name__ == "__main__":
-    asyncio.run(main())
+    controller = MasterController()
+    asyncio.run(controller.run_forever())

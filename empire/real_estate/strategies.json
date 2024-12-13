@@ -1,0 +1,14 @@
+{
+    "commercial": {
+        "office_space": true,
+        "retail": true
+    },
+    "residential": {
+        "apartments": true,
+        "houses": true
+    },
+    "industrial": {
+        "warehouses": true,
+        "manufacturing": true
+    }
+}

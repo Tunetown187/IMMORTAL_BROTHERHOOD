@@ -1,0 +1,4 @@
+root: C:\Users\p8tty\Downloads\bolt.new-any-llm-main\bolt.new-any-llm-main 
+path: C:\Program Files\nodejs 
+arch: 64 
+proxy: none

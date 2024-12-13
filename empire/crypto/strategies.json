@@ -1,0 +1,16 @@
+{
+    "defi": {
+        "yield_farming": true,
+        "liquidity_provision": true,
+        "arbitrage": true
+    },
+    "trading": {
+        "spot": true,
+        "futures": true,
+        "options": true
+    },
+    "mining": {
+        "pos_staking": true,
+        "validator_nodes": true
+    }
+}

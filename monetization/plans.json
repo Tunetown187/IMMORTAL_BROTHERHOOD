@@ -1,0 +1,36 @@
+{
+    "subscription_plans": {
+        "basic": {
+            "price": 29,
+            "features": [
+                "Basic Features",
+                "Email Support"
+            ]
+        },
+        "pro": {
+            "price": 99,
+            "features": [
+                "Pro Features",
+                "Priority Support",
+                "API Access"
+            ]
+        },
+        "enterprise": {
+            "price": 299,
+            "features": [
+                "Enterprise Features",
+                "Dedicated Support",
+                "Custom Integration"
+            ]
+        }
+    },
+    "payment_methods": {
+        "stripe": true,
+        "crypto": true,
+        "wire": true
+    },
+    "affiliate_program": {
+        "commission": 30,
+        "cookie_duration": 30
+    }
+}

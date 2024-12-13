@@ -1,0 +1,23 @@
+{
+    "hosting": {
+        "provider": "vercel",
+        "config": {
+            "framework": "next.js",
+            "node_version": "18.x"
+        }
+    },
+    "database": {
+        "provider": "supabase",
+        "config": {
+            "url": "https://iagrctxgdqwovsoaazes.supabase.co",
+            "key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlhZ3JjdHhnZHF3b3Zzb2FhemVzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMzk1Nzg5MiwiZXhwIjoyMDQ5NTMzODkyfQ.JteBHzuj-rR2wRy4cUwNuSAi0wbaKpnIQp-dwv6aEDM"
+        }
+    },
+    "payment": {
+        "provider": "stripe",
+        "config": {
+            "public_key": "your_stripe_public_key",
+            "webhook_secret": "your_webhook_secret"
+        }
+    }
+}

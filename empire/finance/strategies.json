@@ -1,0 +1,14 @@
+{
+    "banking": {
+        "digital_banking": true,
+        "loans": true
+    },
+    "investments": {
+        "stocks": true,
+        "bonds": true
+    },
+    "insurance": {
+        "life": true,
+        "property": true
+    }
+}

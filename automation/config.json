@@ -1,0 +1,17 @@
+{
+    "marketing": {
+        "email_campaigns": true,
+        "social_media": true,
+        "content_creation": true
+    },
+    "support": {
+        "chatbot": true,
+        "ticket_system": true,
+        "knowledge_base": true
+    },
+    "operations": {
+        "monitoring": true,
+        "backup": true,
+        "scaling": true
+    }
+}

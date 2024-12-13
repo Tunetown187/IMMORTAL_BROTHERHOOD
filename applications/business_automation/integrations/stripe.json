@@ -1,0 +1,4 @@
+{
+    "public": "your_stripe_public_key",
+    "secret": "your_stripe_secret_key"
+}

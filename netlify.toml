@@ -1,0 +1,24 @@
+[build]
+  command = "npm install && pip install -r requirements.txt"
+  functions = "netlify/functions"
+  publish = "public"
+
+[functions]
+  directory = "ghl-automation/netlify/functions"
+  node_bundler = "esbuild"
+  included_files = ["*.py", "requirements.txt"]
+
+[build.environment]
+  PYTHON_VERSION = "3.9"
+  NODE_VERSION = "16"
+  TELEGRAM_BOT_TOKEN = "7838814763:AAGVkweVaww77zuWb6lUz4Fg6Xm5yiiEido"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/telegram/*"
+  to = "/.netlify/functions/telegram_webhook"
+  status = 200

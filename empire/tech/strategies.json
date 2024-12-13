@@ -1,0 +1,14 @@
+{
+    "software": {
+        "saas": true,
+        "mobile_apps": true
+    },
+    "hardware": {
+        "robotics": true,
+        "iot_devices": true
+    },
+    "infrastructure": {
+        "cloud_services": true,
+        "networking": true
+    }
+}

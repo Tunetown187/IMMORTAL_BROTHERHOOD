@@ -1,0 +1,17 @@
+{
+    "rpc_url": "https://api.mainnet-beta.solana.com",
+    "wallet_address": "GeEnf1LpL2qrCW8o8FWyJsSZiCVCVh4TFk6evc7vky5z",
+    "monitoring": {
+        "check_interval_seconds": 10,
+        "max_history_size": 1000,
+        "alert_thresholds": {
+            "large_transaction_sol": 1.0,
+            "suspicious_activity_timeout_minutes": 30
+        }
+    },
+    "notifications": {
+        "enabled": true,
+        "log_level": "INFO",
+        "save_history": true
+    }
+}

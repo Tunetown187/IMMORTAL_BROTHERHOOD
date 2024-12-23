@@ -1,0 +1,26 @@
+{
+    "last_session": "2024-12-14T00:46:06-05:00",
+    "trading_wallet": "0x81C3B9C7cC2cfF3a700A05d91a2a50f74b8E6ac4",
+    "chains": {
+        "ethereum": {
+            "initial_investment": "0.5 ETH",
+            "profit_threshold": "5 ETH"
+        },
+        "bsc": {
+            "initial_investment": "2 BNB",
+            "profit_threshold": "2 BNB"
+        }
+    },
+    "active_strategies": [
+        "ai_memecoin_sniper",
+        "youtube_opportunity_finder",
+        "multi_chain_arbitrage"
+    ],
+    "profit_destinations": {
+        "ethereum": "",
+        "bsc": "",
+        "avalanche": "",
+        "polygon": "",
+        "zksync": ""
+    }
+}

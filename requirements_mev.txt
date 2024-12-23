@@ -1,0 +1,16 @@
+web3>=6.11.3
+eth-account>=0.10.0
+aiohttp>=3.9.1
+python-dotenv>=1.0.0
+websockets>=12.0
+eth-typing>=3.5.0
+eth-utils>=2.3.0
+hexbytes>=0.3.1
+cytoolz>=0.12.2
+eth-hash[pycryptodome]>=0.5.2
+eth-abi>=4.2.1
+flashbots>=0.8.0
+rlp>=3.0.0
+pysha3>=1.0.2
+eth-keys>=0.4.0
+coincurve>=18.0.0

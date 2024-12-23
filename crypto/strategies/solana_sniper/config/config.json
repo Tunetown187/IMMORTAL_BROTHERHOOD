@@ -1,0 +1,41 @@
+{
+    "private_key": "YOUR_PRIVATE_KEY_HERE",
+    "rpc_url": "https://api.mainnet-beta.solana.com",
+    "slippage": 1.0,
+    "max_price_impact": 5.0,
+    "auto_approve": true,
+    "gas_multiplier": 1.5,
+    "use_arbitrage": true,
+    "use_social_signals": true,
+    "min_profit": 0.5,
+    "telegram_token": "YOUR_TELEGRAM_TOKEN",
+    "twitter_token": "YOUR_TWITTER_TOKEN",
+    "discord_token": "YOUR_DISCORD_TOKEN",
+    "telegram_channels": [
+        "pump_signals",
+        "crypto_alerts"
+    ],
+    "twitter_accounts": [
+        "whale_alert",
+        "crypto_signals"
+    ],
+    "discord_channels": [
+        "trading_signals",
+        "pump_alerts"
+    ],
+    "divine_strategies": {
+        "pump_detection": {
+            "time_window": 3600,
+            "min_price_change": 5.0,
+            "min_volume_change": 50.0
+        },
+        "market_making": {
+            "order_size": 1000,
+            "spread": 0.2
+        },
+        "arbitrage": {
+            "min_profit": 0.5,
+            "max_route_length": 3
+        }
+    }
+}

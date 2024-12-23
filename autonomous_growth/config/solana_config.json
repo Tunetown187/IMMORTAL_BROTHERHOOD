@@ -1,0 +1,47 @@
+{
+    "dex_programs": {
+        "raydium": {
+            "program_id": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
+            "pools": [
+                "58oQChx4yWmvKdwLLZzBi4ChoCc2fqCUWBkwMihLYQo2",
+                "2ZnVuidTHpi5WWKUwFXauYGhvdT9jRKYv5MDahtbwtYr",
+                "2PH1quJj9MHQXATCmNZ6qQ2gZqM8R236DpKaz99ggVpm"
+            ]
+        },
+        "orca": {
+            "program_id": "9W959DqEETiGZocYWCQPaJ6sBmUzgfxXfqGeTEdp3aQP",
+            "pools": [
+                "2ZnVuidTHpi5WWKUwFXauYGhvdT9jRKYv5MDahtbwtYr",
+                "4YnaUGd3m1xQxkPgAkZZR4VsGEFwkJhizdewoYZHbFec",
+                "Dqk7mHQBx2ZWExmyrR2S8X6UG75CrbbpK2FSBZsNYsw6"
+            ]
+        },
+        "serum": {
+            "program_id": "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
+            "pools": [
+                "9wFFyRfZBsuAha4YcuxcXLKwMxJR43S7fPfQLusDBzvT",
+                "A8YFbxQYFVqKZaoYJLLUVcQiWP7G2MeEgW5wsAQgMvFw",
+                "4tSvZvnbyzHXLMTiFonMyxZoHmFqau1XArcRCVHLZ5gX"
+            ]
+        }
+    },
+    "divine_settings": {
+        "min_liquidity": 50,
+        "min_volume": 10,
+        "max_slippage": 0.02,
+        "divine_blessing_threshold": 0.6,
+        "monitoring": {
+            "check_interval_ms": 1000,
+            "max_concurrent_monitors": 3
+        },
+        "risk_management": {
+            "max_position_size": 0.1,
+            "stop_loss": 0.1,
+            "take_profit": 0.5,
+            "max_daily_trades": 5
+        },
+        "wallet": {
+            "address": "GeEnf1LpL2qrCW8o8FWyJsSZiCVCVh4TFk6evc7vky5z"
+        }
+    }
+}

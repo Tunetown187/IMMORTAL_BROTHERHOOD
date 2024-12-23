@@ -1,0 +1,8 @@
+{
+    "private_key": "5KJqyf6eXSgnwrHZe8PdFiaz672W43Sp6zPX1NSQYk3am6CdC2NYSifhpjZQpSJzAezQGjE7uA3oqqyCEwCKDr68",
+    "rpc_url": "https://api.mainnet-beta.solana.com",
+    "slippage": 1.0,
+    "max_price_impact": 5.0,
+    "auto_approve": true,
+    "gas_multiplier": 1.5
+}

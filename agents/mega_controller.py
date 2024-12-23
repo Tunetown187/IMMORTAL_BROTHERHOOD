@@ -4,7 +4,7 @@ from pathlib import Path
 from datetime import datetime
 import json
 import os
-from dotenv import load_load_dotenv
+from dotenv import load_dotenv
 
 class MegaController:
     def __init__(self):

@@ -1,0 +1,20 @@
+{
+    "rpc_url": "https://api.mainnet-beta.solana.com",
+    "private_key": "2FFhe61Db5oHyYQ5yQ6QN5mnsUMpSwJ8kNQPvrC23L18o2uNkCR4V3y7QzWkTpWvHX6YJqB7BNyz6kNE1EUDuBjW",
+    "trading_params": {
+        "min_liquidity": 10000,
+        "max_slippage": 1.0,
+        "min_profit": 0.5,
+        "position_size": 0.1,
+        "stop_loss": 5.0,
+        "take_profit": 20.0
+    },
+    "token_list": [
+        "So11111111111111111111111111111111111111112"
+    ],
+    "dex_list": [
+        "raydium",
+        "orca",
+        "jupiter"
+    ]
+}

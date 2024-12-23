@@ -215,3 +215,12 @@ node_modules/
 # Conversation logs and backups
 conversation_logs/
 bookmarks_data/
+
+# Large files
+resources/crypto_resources/*.zip
+resources/landing_pages/*.zip
+*.zip
+*.gz
+*.tar
+*.rar
+*.7z

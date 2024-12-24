@@ -1,9 +1,8 @@
 import stripe
 import logging
 from typing import Dict, Optional
-from config import STRIPE_SECRET_KEY, STRIPE_PUBLISHABLE_KEY
-import base64
 import streamlit as st
+import base64
 
 class PaymentHandler:
     def __init__(self):
@@ -20,8 +19,9 @@ class PaymentHandler:
     def setup_stripe(self):
         """Initialize Stripe with API keys"""
         try:
-            stripe.api_key = STRIPE_SECRET_KEY
-            self.publishable_key = STRIPE_PUBLISHABLE_KEY
+            # Get API keys from Streamlit secrets
+            stripe.api_key = st.secrets["STRIPE_SECRET_KEY"]
+            self.publishable_key = st.secrets["STRIPE_PUBLISHABLE_KEY"]
             self.logger.info("Stripe initialized successfully")
         except Exception as e:
             self.logger.error(f"Error initializing Stripe: {str(e)}")

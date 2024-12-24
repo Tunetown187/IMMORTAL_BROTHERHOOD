@@ -2,9 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
 
 # C extensions
-*.so
 
 # Distribution / packaging
 .Python
@@ -170,17 +170,55 @@ tests/settings.json
 node_modules
 
 # Python
-# __pycache__/ is already included above
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
 # Virtual Environment
-# venv/, env/, ENV/ are already included above
+venv/
+env/
+ENV/
+.venv/
 
 # IDE
+.idea/
 .vscode/
 *.swp
 *.swo
 
+# Streamlit
+.streamlit/secrets.toml
+
+# Local development
+*.db
+*.sqlite3
+.env
+config.py
+*.key
+encryption.key
+
+# Node
+node_modules/
+
 # Logs
+*.log
 logs/
 empire_operations.log
 
@@ -207,10 +245,6 @@ master.key
 firebase-key.json
 *.pem
 *.key
-
-# Local development
-*.log
-node_modules/
 
 # Conversation logs and backups
 conversation_logs/

@@ -4,7 +4,6 @@ __pycache__/
 *$py.class
 *.so
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -16,28 +15,34 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 
 # Virtual Environment
 venv/
+env/
 ENV/
 
-# IDE
+# IDEs
 .idea/
 .vscode/
 *.swp
 *.swo
 
-# Logs
-*.log
-
-# Local configuration
+# Local Development
 .env
-*.env
-config/secrets.json
+.streamlit/secrets.toml
+resources.db
+deployment_resources/
+browser_profiles.json
+config.py
 
-# OS
+# System Files
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+logs/

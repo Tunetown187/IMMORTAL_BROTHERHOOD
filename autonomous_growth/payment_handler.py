@@ -1,8 +1,7 @@
-import stripe
 import logging
-from typing import Dict, Optional
+import stripe
 import streamlit as st
-import base64
+from typing import Dict, Optional
 
 class PaymentHandler:
     def __init__(self):
@@ -17,18 +16,23 @@ class PaymentHandler:
         self.logger = logging.getLogger(__name__)
         
     def setup_stripe(self):
-        """Initialize Stripe with API keys"""
+        """Setup Stripe with API keys from secrets"""
         try:
-            # Get API keys from Streamlit secrets
-            stripe.api_key = st.secrets["STRIPE_SECRET_KEY"]
-            self.publishable_key = st.secrets["STRIPE_PUBLISHABLE_KEY"]
-            self.logger.info("Stripe initialized successfully")
+            # Default to test mode
+            stripe.api_key = "sk_test_51QNQF2JX8wdxTT0oDO6yKPwefLadt88pUWiL1eKDipEjWB1t6NT1iBxzXtuJYeMPgvSKj3UP6GwVDn71vhkVuVeS00MNUa4gSu"
+            self.logger.info("Using Stripe test mode by default")
+            
+            # Try to get production key if available
+            if hasattr(st, 'secrets') and "STRIPE_SECRET_KEY" in st.secrets:
+                stripe.api_key = st.secrets["STRIPE_SECRET_KEY"]
+                self.logger.info("Stripe API initialized with production key")
+                
         except Exception as e:
-            self.logger.error(f"Error initializing Stripe: {str(e)}")
-            raise
-
-    async def create_product(self, name: str, description: str, price: float) -> Dict:
-        """Create a Stripe product with price"""
+            self.logger.error(f"Error setting up Stripe: {str(e)}")
+            self.logger.warning("Continuing with test mode")
+            
+    def create_product(self, name: str, description: str, price: float) -> Optional[Dict]:
+        """Create a new product with Stripe"""
         try:
             # Create product
             product = stripe.Product.create(
@@ -36,14 +40,14 @@ class PaymentHandler:
                 description=description
             )
             
-            # Create price for the product
+            # Create price for product
             price_obj = stripe.Price.create(
                 product=product.id,
                 unit_amount=int(price * 100),  # Convert to cents
-                currency="usd",
-                recurring={"interval": "month"}  # For subscription products
+                currency="usd"
             )
             
+            self.logger.info(f"Created product: {name}")
             return {
                 "product_id": product.id,
                 "price_id": price_obj.id,
@@ -54,8 +58,8 @@ class PaymentHandler:
         except Exception as e:
             self.logger.error(f"Error creating product: {str(e)}")
             return None
-
-    async def create_checkout_session(self, price_id: str, success_url: str, cancel_url: str) -> Optional[str]:
+            
+    def create_checkout_session(self, price_id: str, success_url: str, cancel_url: str) -> Optional[str]:
         """Create a Stripe checkout session"""
         try:
             session = stripe.checkout.Session.create(
@@ -64,17 +68,29 @@ class PaymentHandler:
                     'price': price_id,
                     'quantity': 1,
                 }],
-                mode='subscription',
+                mode='payment',
                 success_url=success_url,
                 cancel_url=cancel_url,
             )
-            
             return session.url
             
         except Exception as e:
             self.logger.error(f"Error creating checkout session: {str(e)}")
             return None
-
+            
+    def get_payment_status(self, session_id: str) -> Dict:
+        """Get status of a payment session"""
+        try:
+            session = stripe.checkout.Session.retrieve(session_id)
+            return {
+                "status": session.payment_status,
+                "amount": session.amount_total / 100  # Convert from cents
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Error getting payment status: {str(e)}")
+            return {"status": "error", "error": str(e)}
+            
     async def handle_subscription(self, subscription_id: str) -> Dict:
         """Handle subscription updates"""
         try:

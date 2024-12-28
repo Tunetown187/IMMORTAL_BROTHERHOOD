@@ -2,16 +2,14 @@ import os
 import json
 import asyncio
 from typing import Dict, List
-import undetected_chromedriver as uc
-from selenium.webdriver.chrome.options import Options
-import random
-import string
 import logging
+import string
+import random
 from pathlib import Path
 from datetime import datetime
 import google.generativeai as genai
 from typing import Dict, List, Optional
-import undetected_chromedriver as uc
+import streamlit as st
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -139,17 +137,17 @@ class AgentConfigManager:
         }
         return platforms[random.choice(list(platforms.keys()))]
 
-    async def setup_browser(self, agent_id: str) -> uc.Chrome:
+    async def setup_browser(self, agent_id: str) -> None:
         """Setup undetected Chrome browser with agent's profile"""
         profile = await self.load_agent_profile(agent_id)
         
-        options = uc.ChromeOptions()
+        options = None
         options.add_argument(f'--user-agent={profile["browser_profile"]["user_agent"]}')
         options.add_argument('--disable-blink-features=AutomationControlled')
         options.add_argument('--disable-dev-shm-usage')
         options.add_argument('--no-sandbox')
         
-        return uc.Chrome(options=options)
+        return None
 
     async def load_agent_profile(self, agent_id: str) -> Dict:
         """Load agent's profile from disk"""
@@ -169,15 +167,15 @@ class AgentConfigManager:
         with open(profile_path, "w") as f:
             json.dump(profile, f, indent=4)
 
-    async def create_service_account(self, agent_id: str, service: str, browser: uc.Chrome):
+    async def create_service_account(self, agent_id: str, service: str, browser: None):
         """Create account on a service and get API key"""
         try:
             profile = await self.load_agent_profile(agent_id)
             signup_url = self.api_services[service]["signup_url"]
             
             # Navigate to signup page
-            browser.get(signup_url)
-            await asyncio.sleep(2)  # Wait for page load
+            # browser.get(signup_url)
+            # await asyncio.sleep(2)  # Wait for page load
             
             # TODO: Implement service-specific signup flows
             # This will be different for each service (Gemini, Mistral, etc.)
@@ -312,7 +310,7 @@ class AgentConfigManager:
             return {"status": "error", "error": str(e)}
             
         finally:
-            browser.quit()
+            # browser.quit()
 
     async def _setup_digital_product(self, agent_id: str, product: Dict):
         """Setup a digital product"""
@@ -340,7 +338,7 @@ class AgentConfigManager:
             return {"status": "error", "error": str(e)}
             
         finally:
-            browser.quit()
+            # browser.quit()
 
     async def _setup_service_product(self, agent_id: str, product: Dict):
         """Setup a service product"""
@@ -368,7 +366,7 @@ class AgentConfigManager:
             return {"status": "error", "error": str(e)}
             
         finally:
-            browser.quit()
+            # browser.quit()
 
     async def _deploy_saas_infrastructure(self, browser, product: Dict):
         """Deploy SaaS infrastructure on Vercel/Railway"""
